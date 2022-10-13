@@ -2,11 +2,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { TaskController } from './entities/task/task.controller.js';
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
 // Initital Configurations
 dotenv.config()
 const app = express();
 const port = process.env.PORT || 3000;
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const taskController = new TaskController();
 
 // Middleware
@@ -27,6 +31,10 @@ app.put('/api/task', (req, res) => {
 
 app.delete('/api/task/:id', (req, res) => {
     taskController.deleteTask(req.params.id).then(data => res.json(data));
+});
+
+app.get('/supersaiyanpatrick', (req, res) => {
+    res.sendFile('view/index.html', { root: __dirname })
 });
 
 app.get('/', (req, res) => {

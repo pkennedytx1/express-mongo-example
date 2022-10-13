@@ -5,8 +5,7 @@ export const connect = () => {
     const url = process.env.MONGO_CONNECTION_STRING;
     console.log("process.env.MONGO_CONNECTION_STRING :::" + process.env.MONGO_CONNECTION_STRING);
 
-    mongoose.connect(url, {
-    })
+    mongoose.connect(url);
 
     mongoose.connection.once("open", async () => {
         console.log("Connected to database");
@@ -25,7 +24,7 @@ export const disconnect = () => {
     
     mongoose.disconnect();
 
-    mongoose.once("close", async () => {
+    mongoose.connection.once("close", async () => {
         console.log("Diconnected  to database");
     });
 
