@@ -6,7 +6,9 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "start": "docker compose up -d && node server.js"
+    "dev": "docker compose up -d && node server.js",
+    "start": "docker compose up",
+    "seed": "docker compose up -d && node ./scripts/seedTasks.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.6.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
   }
 }
