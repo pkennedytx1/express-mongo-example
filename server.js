@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { TaskController } from './entities/task/task.controller.js';
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { UserController } from './entities/user/user.controller.js';
+import { authenticateToken } from './config/jwtConfig.js';
 
 // Initital Configurations
 dotenv.config()
@@ -12,12 +14,18 @@ const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const taskController = new TaskController();
+const userController = new UserController();
 
 // Middleware
 app.use(bodyParser.json());
 
-// Endpoints
-app.get('/api/tasks', (req, res) => {
+// ***** Endpoints *****
+// User Endpoints
+app.post('/api/signup', (req, res) => {
+    userController.signup(req.body.user).then(data => res.json(data));
+})
+// Task Endpoints
+app.get('/api/tasks', authenticateToken, (req, res) => {
     taskController.getTasks().then(data => res.json(data));
 });
 
