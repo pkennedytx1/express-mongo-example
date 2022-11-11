@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
         email: 'string', 
         password: 'string',
         createDate: 'date', 
-        updatedDate: 'date', 
+        updatedDate: 'date',
     }, {
         timestamps: {
             createDate: 'created_at',

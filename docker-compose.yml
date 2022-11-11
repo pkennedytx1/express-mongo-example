@@ -9,9 +9,17 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data_container:/data/db
+  redis-cache:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass patty
+    volumes:
+      - cache:/data
   task-api:
     depends_on:
       - mongodb_container
+      - redis-cache
     build: .
     environment:
       - MONGO_CONNECTION_STRING=mongodb://root:rootpassword@mongodb_container
@@ -20,3 +28,4 @@ services:
 
 volumes:
   mongodb_data_container:
+  cache:

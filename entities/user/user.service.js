@@ -23,7 +23,6 @@ export class UserService {
                 "password": "Password mus be at least 5 characters"
             });
         }
-        console.log(errors);
         return errors
     }
 
@@ -33,5 +32,9 @@ export class UserService {
             return await this.userRepository.signup(user);
         }
         return { errors };
+    }
+
+    async login(user) {
+        return await this.userRepository.login(user);
     }
 }

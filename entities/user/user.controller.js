@@ -9,4 +9,9 @@ export class UserController {
         console.log('Controller: signup')
         return await this.userService.signup(user);
     }
+
+    async login(user) {
+        console.log('Controller: login')
+        return await this.userService.login(user);
+    }
 }

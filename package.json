@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm run test",
     "start": "docker compose up -d",
-    "local": "docker compose up -d mongodb_container && node server.js",
+    "local": "docker compose up -d mongodb_container redis-cache && nodemon server.js",
     "seed": "docker compose up -d && node ./scripts/seedTasks.js"
   },
   "author": "",
@@ -17,12 +17,17 @@
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
     "faker": "^6.6.6",
+    "ioredis": "^5.2.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.4"
+    "mongoose": "^6.6.4",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.3",
+    "swagger-ui-express": "^4.6.0"
   }
 }
