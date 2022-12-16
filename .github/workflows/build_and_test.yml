@@ -21,8 +21,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-      - name: Build the stack
-        run: docker-compose up -d
       - name: Build the Docker Containers
         run: docker build -t pkennedytx1/express-api-mongo-example-task-api:1.0.0
       - name: Generate ZIP Deployment Package
@@ -45,7 +43,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: express-example-api
           environment_name: Expressexampleapi-env
-          version_label: "example-api-${{ steps.format-time.outputs.replaced }}"
+          version_label: "express-example-api-${{ steps.format-time.outputs.replaced }}"
           region: us-east-2
           deployment_package: deploy.zip
         
