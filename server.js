@@ -48,6 +48,9 @@ app.use(bodyParser.json());
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument.default));
 
 // ***** Endpoints *****
+app.get('/', (req, res) => {
+    return res.json("Howdy Hey")
+})
 // User Endpoints
 app.post('/api/signup', (req, res) => {
     userController.signup(req.body.user).then(data => res.json(data));
