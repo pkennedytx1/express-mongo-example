@@ -9,8 +9,8 @@ export class TaskService {
         return await this.taskRepository.getTasks();
     }
 
-    async createTask(task) {
-        return await this.taskRepository.createTask(task);
+    async createTask(task, context) {
+        return await this.taskRepository.createTask(task, context);
     }
 
     async updateTask(task) {

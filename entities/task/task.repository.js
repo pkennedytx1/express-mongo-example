@@ -12,13 +12,15 @@ export class TaskRepository {
         return tasks;
     }
 
-    async createTask(task) {
+    async createTask(task, context) {
         let data = {};
         try {
             data = await Task.create(task);
         } catch(err) {
             console.error('Error::' + err);
         }
+        context.redis.set('EXAMPLEKEY:2', JSON.stringify(data));
+        context.io.emit('tasks', JSON.stringify(data));
         return data;
     }
 

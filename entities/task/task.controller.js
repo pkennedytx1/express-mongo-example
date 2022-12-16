@@ -9,9 +9,9 @@ export class TaskController {
         return await this.taskService.getTasks();
     }
 
-    async createTask(task) {
+    async createTask(task, context) {
         console.log('Controller: createTask', task);
-        return await this.taskService.createTask(task);
+        return await this.taskService.createTask(task, context);
     }
 
     async updateTask(task) {

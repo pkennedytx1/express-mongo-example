@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "My Task API",
+      "description": "My Task API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+        "/api/tasks": {
+            "get": {
+                "tags": ["Tasks"],
+                "summary": "Get all the tasks",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Tasks"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task": {
+            "post": {
+                "tags": ["Task"],
+                "summary": "Create a new task",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "task",
+                        "description": "name of task",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    },
+                    {
+                        "in": "headers",
+                        "name": "token",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Task": {
+            "required": ["_id", "name", "description"],
+            "properties": {
+                "_id": {
+                    "type": "UUID",
+                    "uniqueItems": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "Tasks": {
+            "type": "array",
+            "$ref": "#/definitions/Task"
+        }
+    },
+    "tags": [
+      {
+        "name": "Tasks",
+        "description": "API for tasks"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+  }

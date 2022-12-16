@@ -1,12 +1,12 @@
-import { connect, disconnect } from '../config/dbConfig.js';
 import { faker } from '@faker-js/faker';
 import { Task } from '../entities/task/task.model.js';
+import { connect, disconnect } from '../config/dbConfig.js';
 import dotenv from 'dotenv';
 
 const seedTasks = async () => {
-    dotenv.config();
+    dotenv.config()
     connect();
-    const taskArray = [];
+    const taskArray = []
     for(let i = 0; i < 20; i++) {
         const task = {
             name: faker.lorem.word(),
