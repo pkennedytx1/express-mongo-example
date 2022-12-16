@@ -40,6 +40,8 @@ const context = {
     io
 }
 
+const howdy = "howdy";
+
 // Middleware
 app.use(cors());
 // *** body parser middleware ***
