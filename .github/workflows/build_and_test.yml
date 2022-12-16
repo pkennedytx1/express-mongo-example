@@ -24,7 +24,7 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Build the Docker Containers
-        run: docker compose build
+        run: docker build -t pkennedytx1/express-api-mongo-example-task-api:1.0.0
       - name: Generate ZIP Deployment Package
         run: zip -r deploy.zip . -x '*.git*'
       - name: Get timestamp
