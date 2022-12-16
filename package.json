@@ -10,7 +10,7 @@
     "local": "docker compose up -d mongodb_container redis-cache && nodemon server.js",
     "seed": "docker compose up -d && node ./scripts/seedTasks.js"
   },
-  "author": "",
+  "author": "Patrick Kennedy",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
@@ -29,5 +29,14 @@
     "nodemon": "^2.0.20",
     "socket.io": "^4.5.3",
     "swagger-ui-express": "^4.6.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkennedytx1/express-mongo-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pkennedytx1/express-mongo-example/issues"
+  },
+  "homepage": "https://github.com/pkennedytx1/express-mongo-example#readme"
 }
