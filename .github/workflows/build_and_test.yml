@@ -24,7 +24,7 @@ jobs:
       - name: Build the Docker Containers
         run: docker compose build
       - name: Generate ZIP Deployment Package
-        run: zip -r deploy.zip*
+        run: zip -r deploy.zip . -x '*.git*'
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
         with:
