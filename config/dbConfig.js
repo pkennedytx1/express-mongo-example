@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 export const connect = () => {
 
     const url = process.env.MONGO_CONNECTION_STRING;
-    console.log("process.env.MONGO_CONNECTION_STRING :::" + process.env.MONGO_CONNECTION_STRING);
 
     mongoose.connect(url);
 
